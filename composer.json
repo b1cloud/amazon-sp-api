@@ -1,5 +1,5 @@
 {
-    "name": "GIT_USER_ID/GIT_REPO_ID",
+    "name": "JohnMirro/b1-amazon-sp-api",
     "description": "",
     "keywords": [
         "swagger",
@@ -7,9 +7,13 @@
         "sdk",
         "api"
     ],
-    "homepage": "http://swagger.io",
+    "homepage": "https://b1.lt",
     "license": "proprietary",
     "authors": [
+        {
+            "name": "Roman M",
+            "homepage": "https://b1.lt"
+        },
         {
             "name": "Swagger and contributors",
             "homepage": "https://github.com/swagger-api/swagger-codegen"

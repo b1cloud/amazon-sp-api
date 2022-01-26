@@ -1,5 +1,5 @@
 {
-    "name": "johnmirro/b1-amazon-sp-api",
+    "name": "b1cloud/amazon-sp-api",
     "description": "",
     "keywords": [
         "swagger",
@@ -11,7 +11,7 @@
     "license": "proprietary",
     "authors": [
         {
-            "name": "Roman M",
+            "name": "B1",
             "homepage": "https://b1.lt"
         },
         {

@@ -115,6 +115,8 @@ class Configuration
     protected $accessKey;
     /** @var string|null */
     protected $secretKey;
+    /** @var string|null */
+    protected $region;
 
     /**
      * Constructor
@@ -451,4 +453,14 @@ class Configuration
     {
         $this->secretKey = $secretKey;
     }
+    public function getRegion(): ?string
+    {
+        return $this->region;
+    }
+
+    public function setRegion(?string $region): void
+    {
+        $this->region = $region;
+    }
+
 }

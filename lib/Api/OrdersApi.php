@@ -38,6 +38,9 @@ use B1\AmazonSPAPI\ApiException;
 use B1\AmazonSPAPI\Configuration;
 use B1\AmazonSPAPI\HeaderSelector;
 use B1\AmazonSPAPI\ObjectSerializer;
+use B1\AmazonSPAPI\Model\GetOrderResponse;
+use B1\AmazonSPAPI\Model\GetOrdersResponse;
+use B1\AmazonSPAPI\Helpers\SellingPartnerApiRequest;
 
 /**
  * OrdersV0Api Class Doc Comment
@@ -49,6 +52,8 @@ use B1\AmazonSPAPI\ObjectSerializer;
  */
 class OrdersApi
 {
+    use SellingPartnerApiRequest;
+
     /**
      * @var ClientInterface
      */
@@ -65,18 +70,14 @@ class OrdersApi
     protected $headerSelector;
 
     /**
-     * @param ClientInterface $client
      * @param Configuration   $config
-     * @param HeaderSelector  $selector
      */
     public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null
+        Configuration $config = null
     ) {
-        $this->client = $client ?: new Client();
+        $this->client =  new Client();
         $this->config = $config ?: new Configuration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
+        $this->headerSelector = new HeaderSelector();
     }
 
     /**
@@ -1730,112 +1731,8 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrdersResponse';
         $request = $this->getOrdersRequest($marketplaceIds, $createdAfter, $createdBefore, $lastUpdatedAfter, $lastUpdatedBefore, $orderStatuses, $fulfillmentChannels, $paymentMethods, $buyerEmail, $sellerOrderId, $maxResultsPerPage, $easyShipShipmentStatuses, $nextToken, $amazonOrderIds, $actualFulfillmentSupplySourceId, $isISPU, $storeChainStoreId);
+        return $this->sendRequest($request, GetOrdersResponse::class);
 
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\B1\AmazonSPAPI\Model\GetOrdersResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\B1\AmazonSPAPI\Model\GetOrdersResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\B1\AmazonSPAPI\Model\GetOrdersResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\B1\AmazonSPAPI\Model\GetOrdersResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 429:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\B1\AmazonSPAPI\Model\GetOrdersResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\B1\AmazonSPAPI\Model\GetOrdersResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 503:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\B1\AmazonSPAPI\Model\GetOrdersResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
     }
 
     /**

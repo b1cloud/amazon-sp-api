@@ -15,14 +15,15 @@ use GuzzleHttp\Utils;
 trait SellingPartnerApiRequest
 {
     private function generateRequest(
-        bool $multipart,
-        array $formParams,
-        array $queryParams,
+        bool   $multipart,
+        array  $formParams,
+        array  $queryParams,
         string $resourcePath,
-        array $headerParams,
+        array  $headerParams,
         string $method,
-        $httpBody
-    ): Request {
+               $httpBody
+    ): Request
+    {
         if (null != $formParams) {
             ksort($formParams);
         }
@@ -74,7 +75,7 @@ trait SellingPartnerApiRequest
             $method,
             $resourcePath,
             $query,
-            (string) $httpBody,
+            (string)$httpBody,
         );
         $headers = array_merge(
             $headerParams,
@@ -84,7 +85,7 @@ trait SellingPartnerApiRequest
 
         return new Request(
             $method,
-            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
@@ -117,8 +118,6 @@ trait SellingPartnerApiRequest
                     $content = json_decode($content);
                 }
             }
-//            var_dump($content);
-//            exit();
 
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
@@ -150,9 +149,9 @@ trait SellingPartnerApiRequest
     /**
      * Create http client option.
      *
+     * @return array of http client options
      * @throws \RuntimeException on file opening failure
      *
-     * @return array of http client options
      */
     protected function createHttpClientOption(): array
     {
@@ -160,7 +159,7 @@ trait SellingPartnerApiRequest
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
             if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
             }
         }
 
@@ -168,9 +167,9 @@ trait SellingPartnerApiRequest
     }
 
     /**
+     * @return mixed
      * @throws ApiException
      *
-     * @return mixed
      */
     private function sendRequestAsync(Request $request, string $returnType)
     {

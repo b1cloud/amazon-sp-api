@@ -75,7 +75,7 @@ trait SellingPartnerApiRequest
             $method,
             $resourcePath,
             $query,
-            (string)$httpBody,
+            (string)$httpBody
         );
         $headers = array_merge(
             $headerParams,

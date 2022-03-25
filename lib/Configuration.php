@@ -117,6 +117,9 @@ class Configuration
     protected $secretKey;
     /** @var string|null */
     protected $region;
+    /** @var string|null */
+    protected $securityToken;
+
 
     /**
      * Constructor
@@ -461,6 +464,15 @@ class Configuration
     public function setRegion(?string $region): void
     {
         $this->region = $region;
+    }
+    public function getSecurityToken(): ?string
+    {
+        return $this->securityToken;
+    }
+
+    public function setSecurityToken(?string $securityToken): void
+    {
+        $this->securityToken = $securityToken;
     }
 
 }

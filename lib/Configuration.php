@@ -120,6 +120,9 @@ class Configuration
     /** @var string|null */
     protected $securityToken;
 
+    /** @var array*/
+    protected $headers = [];
+
 
     /**
      * Constructor
@@ -473,6 +476,16 @@ class Configuration
     public function setSecurityToken(?string $securityToken): void
     {
         $this->securityToken = $securityToken;
+    }
+
+    public function getHeaders(): ?array
+    {
+        return $this->headers;
+    }
+
+    public function setHeaders(?array $headers): void
+    {
+        $this->headers = $headers;
     }
 
 }

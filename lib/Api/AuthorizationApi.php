@@ -216,6 +216,10 @@ class AuthorizationApi
         if ($mwsAuthToken !== null) {
             $queryParams['mwsAuthToken'] = ObjectSerializer::toQueryValue($mwsAuthToken);
         }
+        //custom headers
+        if($this->config->getHeaders()){
+            $headerParams = $this->config->getHeaders();
+        }
 
         return $this->generateRequest($multipart, $formParams, $queryParams, $resourcePath, $headerParams, 'GET', $httpBody);
     }

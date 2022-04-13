@@ -118,7 +118,7 @@ trait SellingPartnerApiRequest
                     $content = json_decode($content);
                 }
             }
-
+            $this->writeDebug($content);
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
@@ -199,5 +199,18 @@ trait SellingPartnerApiRequest
                     throw new ApiException(sprintf('[%d] Error connecting to the API (%s)', $statusCode, $exception->getRequest()->getUri()), $statusCode, $response->getHeaders(), $response->getBody());
                 }
             );
+    }
+
+    /**
+     * Writes to the debug log file
+     *
+     * @param mixed $data
+     * @return void
+     */
+    private function writeDebug($data)
+    {
+        if ($this->config->getDebug()) {
+            file_put_contents($this->config->getDebugFile(), '[' . date('Y-m-d H:i:s') . ']: ' . print_r($data, true) . "\n", FILE_APPEND);
+        }
     }
 }

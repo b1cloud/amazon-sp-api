@@ -958,9 +958,9 @@ class ReportsApi
      */
     public function getReportWithHttpInfo($reportId)
     {
-
+        $returnType = '\B1\AmazonSPAPI\Model\Report';
         $request = $this->getReportRequest($reportId);
-        return $this->sendRequest($request, GetReportsResponse::class);
+        return $this->sendRequest($request, $returnType);
     }
 
     /**
@@ -997,7 +997,7 @@ class ReportsApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\Report';
         $request = $this->getReportRequest($reportId);
-        return $this->sendRequestAsync($request, GetReportsResponse::class);
+        return $this->sendRequestAsync($request, $returnType);
     }
 
     /**
@@ -1062,7 +1062,7 @@ class ReportsApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\ReportDocument';
         $request = $this->getReportDocumentRequest($reportDocumentId);
-        return $this->sendRequest($request, \B1\AmazonSPAPI\Model\ReportDocument::class);
+        return $this->sendRequest($request, $returnType);
     }
 
     /**
@@ -1099,7 +1099,7 @@ class ReportsApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\ReportDocument';
         $request = $this->getReportDocumentRequest($reportDocumentId);
-        return $this->sendRequestAsync($request, \B1\AmazonSPAPI\Model\ReportDocument::class);
+        return $this->sendRequestAsync($request, $returnType);
     }
 
     /**
@@ -1164,7 +1164,7 @@ class ReportsApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\ReportSchedule';
         $request = $this->getReportScheduleRequest($reportScheduleId);
-        return $this->sendRequest($request, \B1\AmazonSPAPI\Model\ReportSchedule::class);
+        return $this->sendRequest($request, $returnType);
     }
 
     /**

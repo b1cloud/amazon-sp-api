@@ -20,14 +20,14 @@ class ReportDocumentEncryptionDetails implements \ArrayAccess, \JsonSerializable
      *
      * @var string
      */
-    protected static $openAPIModelName = 'ReportDocumentEncryptionDetails';
+    protected static $swaggerModelName = 'ReportDocumentEncryptionDetails';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
      *
      * @var string[]
      */
-    protected static $openAPITypes = [
+    protected static $swaggerTypes = [
         'standard' => 'string',
         'initialization_vector' => 'string',
         'key' => 'string',
@@ -40,7 +40,7 @@ class ReportDocumentEncryptionDetails implements \ArrayAccess, \JsonSerializable
      * @phpstan-var array<string, string|null>
      * @psalm-var array<string, string|null>
      */
-    protected static $openAPIFormats = [
+    protected static $swaggerFormats = [
         'standard' => null,
         'initialization_vector' => null,
         'key' => null,
@@ -105,9 +105,9 @@ class ReportDocumentEncryptionDetails implements \ArrayAccess, \JsonSerializable
      *
      * @return string[]
      */
-    public static function openAPITypes() : array
+    public static function swaggerTypes() : array
     {
-        return self::$openAPITypes;
+        return self::$swaggerTypes;
     }
 
     /**
@@ -115,9 +115,9 @@ class ReportDocumentEncryptionDetails implements \ArrayAccess, \JsonSerializable
      *
      * @return null[]|string[]
      */
-    public static function openAPIFormats() : array
+    public static function swaggerFormats() : array
     {
-        return self::$openAPIFormats;
+        return self::$swaggerFormats;
     }
 
     /**
@@ -167,7 +167,7 @@ class ReportDocumentEncryptionDetails implements \ArrayAccess, \JsonSerializable
      */
     public function getModelName() : string
     {
-        return self::$openAPIModelName;
+        return self::$swaggerModelName;
     }
 
     /**

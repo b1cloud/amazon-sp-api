@@ -61,16 +61,16 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
         'amazonOrderId' => 'string',
         'sellerOrderId' => 'string',
         'marketplaceName' => 'string',
-        'orderChargeList' => '\B1\AmazonSPAPI\Model\ChargeComponentList',
-        'orderChargeAdjustmentList' => '\B1\AmazonSPAPI\Model\ChargeComponentList',
-        'shipmentFeeList' => '\B1\AmazonSPAPI\Model\FeeComponentList',
-        'shipmentFeeAdjustmentList' => '\B1\AmazonSPAPI\Model\FeeComponentList',
-        'orderFeeList' => '\B1\AmazonSPAPI\Model\FeeComponentList',
-        'orderFeeAdjustmentList' => '\B1\AmazonSPAPI\Model\FeeComponentList',
-        'directPaymentList' => '\B1\AmazonSPAPI\Model\DirectPaymentList',
+        'orderChargeList' => '\B1\AmazonSPAPI\Model\ChargeComponent[]',
+        'orderChargeAdjustmentList' => '\B1\AmazonSPAPI\Model\ChargeComponent[]',
+        'shipmentFeeList' => '\B1\AmazonSPAPI\Model\FeeComponent[]',
+        'shipmentFeeAdjustmentList' => '\B1\AmazonSPAPI\Model\FeeComponent[]',
+        'orderFeeList' => '\B1\AmazonSPAPI\Model\FeeComponent[]',
+        'orderFeeAdjustmentList' => '\B1\AmazonSPAPI\Model\FeeComponent[]',
+        'directPaymentList' => '\B1\AmazonSPAPI\Model\DirectPayment[]',
         'postedDate' => 'string',
-        'shipmentItemList' => '\B1\AmazonSPAPI\Model\ShipmentItemList',
-        'shipmentItemAdjustmentList' => '\B1\AmazonSPAPI\Model\ShipmentItemList'
+        'shipmentItemList' => '\B1\AmazonSPAPI\Model\ShipmentItem[]',
+        'shipmentItemAdjustmentList' => '\B1\AmazonSPAPI\Model\ShipmentItem[]'
     ];
 
     /**
@@ -352,7 +352,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Gets orderChargeList
      *
-     * @return \B1\AmazonSPAPI\Model\ChargeComponentList
+     * @return \B1\AmazonSPAPI\Model\ChargeComponent[]
      */
     public function getOrderChargeList()
     {
@@ -362,7 +362,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Sets orderChargeList
      *
-     * @param \B1\AmazonSPAPI\Model\ChargeComponentList $orderChargeList A list of order-level charges. These charges are applicable to Multi-Channel Fulfillment COD orders.
+     * @param \B1\AmazonSPAPI\Model\ChargeComponent[] $orderChargeList A list of order-level charges. These charges are applicable to Multi-Channel Fulfillment COD orders.
      *
      * @return $this
      */
@@ -376,7 +376,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Gets orderChargeAdjustmentList
      *
-     * @return \B1\AmazonSPAPI\Model\ChargeComponentList
+     * @return \B1\AmazonSPAPI\Model\ChargeComponent[]
      */
     public function getOrderChargeAdjustmentList()
     {
@@ -386,7 +386,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Sets orderChargeAdjustmentList
      *
-     * @param \B1\AmazonSPAPI\Model\ChargeComponentList $orderChargeAdjustmentList A list of order-level charge adjustments. These adjustments are applicable to Multi-Channel Fulfillment COD orders.
+     * @param \B1\AmazonSPAPI\Model\ChargeComponent[] $orderChargeAdjustmentList A list of order-level charge adjustments. These adjustments are applicable to Multi-Channel Fulfillment COD orders.
      *
      * @return $this
      */
@@ -400,7 +400,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Gets shipmentFeeList
      *
-     * @return \B1\AmazonSPAPI\Model\FeeComponentList
+     * @return \B1\AmazonSPAPI\Model\FeeComponent[]
      */
     public function getShipmentFeeList()
     {
@@ -410,7 +410,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Sets shipmentFeeList
      *
-     * @param \B1\AmazonSPAPI\Model\FeeComponentList $shipmentFeeList A list of shipment-level fees.
+     * @param \B1\AmazonSPAPI\Model\FeeComponent[] $shipmentFeeList A list of shipment-level fees.
      *
      * @return $this
      */
@@ -424,7 +424,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Gets shipmentFeeAdjustmentList
      *
-     * @return \B1\AmazonSPAPI\Model\FeeComponentList
+     * @return \B1\AmazonSPAPI\Model\FeeComponent[]
      */
     public function getShipmentFeeAdjustmentList()
     {
@@ -434,7 +434,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Sets shipmentFeeAdjustmentList
      *
-     * @param \B1\AmazonSPAPI\Model\FeeComponentList $shipmentFeeAdjustmentList A list of shipment-level fee adjustments.
+     * @param \B1\AmazonSPAPI\Model\FeeComponent[] $shipmentFeeAdjustmentList A list of shipment-level fee adjustments.
      *
      * @return $this
      */
@@ -448,7 +448,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Gets orderFeeList
      *
-     * @return \B1\AmazonSPAPI\Model\FeeComponentList
+     * @return \B1\AmazonSPAPI\Model\FeeComponent[]
      */
     public function getOrderFeeList()
     {
@@ -458,7 +458,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Sets orderFeeList
      *
-     * @param \B1\AmazonSPAPI\Model\FeeComponentList $orderFeeList A list of order-level fees. These charges are applicable to Multi-Channel Fulfillment orders.
+     * @param \B1\AmazonSPAPI\Model\FeeComponent[] $orderFeeList A list of order-level fees. These charges are applicable to Multi-Channel Fulfillment orders.
      *
      * @return $this
      */
@@ -472,7 +472,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Gets orderFeeAdjustmentList
      *
-     * @return \B1\AmazonSPAPI\Model\FeeComponentList
+     * @return \B1\AmazonSPAPI\Model\FeeComponent[]
      */
     public function getOrderFeeAdjustmentList()
     {
@@ -482,7 +482,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Sets orderFeeAdjustmentList
      *
-     * @param \B1\AmazonSPAPI\Model\FeeComponentList $orderFeeAdjustmentList A list of order-level fee adjustments. These adjustments are applicable to Multi-Channel Fulfillment orders.
+     * @param \B1\AmazonSPAPI\Model\FeeComponent[] $orderFeeAdjustmentList A list of order-level fee adjustments. These adjustments are applicable to Multi-Channel Fulfillment orders.
      *
      * @return $this
      */
@@ -496,7 +496,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Gets directPaymentList
      *
-     * @return \B1\AmazonSPAPI\Model\DirectPaymentList
+     * @return \B1\AmazonSPAPI\Model\DirectPayment[]
      */
     public function getDirectPaymentList()
     {
@@ -506,7 +506,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Sets directPaymentList
      *
-     * @param \B1\AmazonSPAPI\Model\DirectPaymentList $directPaymentList A list of transactions where buyers pay Amazon through one of the credit cards offered by Amazon or where buyers pay a seller directly through COD.
+     * @param \B1\AmazonSPAPI\Model\DirectPayment[] $directPaymentList A list of transactions where buyers pay Amazon through one of the credit cards offered by Amazon or where buyers pay a seller directly through COD.
      *
      * @return $this
      */
@@ -544,7 +544,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Gets shipmentItemList
      *
-     * @return \B1\AmazonSPAPI\Model\ShipmentItemList
+     * @return \B1\AmazonSPAPI\Model\ShipmentItem[]
      */
     public function getShipmentItemList()
     {
@@ -554,7 +554,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Sets shipmentItemList
      *
-     * @param \B1\AmazonSPAPI\Model\ShipmentItemList $shipmentItemList shipmentItemList
+     * @param \B1\AmazonSPAPI\Model\ShipmentItem[] $shipmentItemList shipmentItemList
      *
      * @return $this
      */
@@ -568,7 +568,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Gets shipmentItemAdjustmentList
      *
-     * @return \B1\AmazonSPAPI\Model\ShipmentItemList
+     * @return \B1\AmazonSPAPI\Model\ShipmentItem[]
      */
     public function getShipmentItemAdjustmentList()
     {
@@ -578,7 +578,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
     /**
      * Sets shipmentItemAdjustmentList
      *
-     * @param \B1\AmazonSPAPI\Model\ShipmentItemList $shipmentItemAdjustmentList A list of shipment item adjustments.
+     * @param \B1\AmazonSPAPI\Model\ShipmentItem[] $shipmentItemAdjustmentList A list of shipment item adjustments.
      *
      * @return $this
      */

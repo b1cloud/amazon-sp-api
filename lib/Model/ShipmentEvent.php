@@ -68,7 +68,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess
         'orderFeeList' => '\B1\AmazonSPAPI\Model\FeeComponentList',
         'orderFeeAdjustmentList' => '\B1\AmazonSPAPI\Model\FeeComponentList',
         'directPaymentList' => '\B1\AmazonSPAPI\Model\DirectPaymentList',
-        'postedDate' => 'DateTime',
+        'postedDate' => 'string',
         'shipmentItemList' => '\B1\AmazonSPAPI\Model\ShipmentItemList',
         'shipmentItemAdjustmentList' => '\B1\AmazonSPAPI\Model\ShipmentItemList'
     ];

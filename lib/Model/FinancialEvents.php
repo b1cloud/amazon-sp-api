@@ -364,7 +364,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets shipmentEventList
      *
-     * @return \B1\AmazonSPAPI\Model\ShipmentEventList
+     * @return \B1\AmazonSPAPI\Model\ShipmentEvent[]|null
      */
     public function getShipmentEventList()
     {
@@ -388,7 +388,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets refundEventList
      *
-     * @return \B1\AmazonSPAPI\Model\ShipmentEventList
+     * @return \B1\AmazonSPAPI\Model\ShipmentEvent[]|null
      */
     public function getRefundEventList()
     {
@@ -412,7 +412,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets guaranteeClaimEventList
      *
-     * @return \B1\AmazonSPAPI\Model\ShipmentEventList
+     * @return \B1\AmazonSPAPI\Model\ShipmentEvent[]|null
      */
     public function getGuaranteeClaimEventList()
     {
@@ -436,7 +436,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets chargebackEventList
      *
-     * @return \B1\AmazonSPAPI\Model\ShipmentEventList
+     * @return \B1\AmazonSPAPI\Model\ShipmentEvent[]|null
      */
     public function getChargebackEventList()
     {
@@ -460,7 +460,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets payWithAmazonEventList
      *
-     * @return \B1\AmazonSPAPI\Model\PayWithAmazonEventList
+     * @return \B1\AmazonSPAPI\Model\PayWithAmazonEvent[]
      */
     public function getPayWithAmazonEventList()
     {
@@ -484,7 +484,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets serviceProviderCreditEventList
      *
-     * @return \B1\AmazonSPAPI\Model\SolutionProviderCreditEventList
+     * @return \B1\AmazonSPAPI\Model\SolutionProviderCreditEvent[]
      */
     public function getServiceProviderCreditEventList()
     {
@@ -508,7 +508,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets retrochargeEventList
      *
-     * @return \B1\AmazonSPAPI\Model\RetrochargeEventList
+     * @return \B1\AmazonSPAPI\Model\RetrochargeEvent[]
      */
     public function getRetrochargeEventList()
     {
@@ -532,7 +532,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets rentalTransactionEventList
      *
-     * @return \B1\AmazonSPAPI\Model\RentalTransactionEventList
+     * @return \B1\AmazonSPAPI\Model\RentalTransactionEvent[]
      */
     public function getRentalTransactionEventList()
     {
@@ -556,7 +556,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets productAdsPaymentEventList
      *
-     * @return \B1\AmazonSPAPI\Model\ProductAdsPaymentEventList
+     * @return \B1\AmazonSPAPI\Model\ProductAdsPaymentEvent[]
      */
     public function getProductAdsPaymentEventList()
     {
@@ -580,7 +580,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets serviceFeeEventList
      *
-     * @return \B1\AmazonSPAPI\Model\ServiceFeeEventList
+     * @return \B1\AmazonSPAPI\Model\ServiceFeeEvent[]
      */
     public function getServiceFeeEventList()
     {
@@ -604,7 +604,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets sellerDealPaymentEventList
      *
-     * @return \B1\AmazonSPAPI\Model\SellerDealPaymentEventList
+     * @return \B1\AmazonSPAPI\Model\SellerDealPaymentEvent[]
      */
     public function getSellerDealPaymentEventList()
     {
@@ -628,7 +628,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets debtRecoveryEventList
      *
-     * @return \B1\AmazonSPAPI\Model\DebtRecoveryEventList
+     * @return \B1\AmazonSPAPI\Model\DebtRecoveryEvent[]
      */
     public function getDebtRecoveryEventList()
     {
@@ -652,7 +652,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets loanServicingEventList
      *
-     * @return \B1\AmazonSPAPI\Model\LoanServicingEventList
+     * @return \B1\AmazonSPAPI\Model\LoanServicingEvent[]
      */
     public function getLoanServicingEventList()
     {
@@ -676,7 +676,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets adjustmentEventList
      *
-     * @return \B1\AmazonSPAPI\Model\AdjustmentEventList
+     * @return \B1\AmazonSPAPI\Model\AdjustmentEvent[]
      */
     public function getAdjustmentEventList()
     {
@@ -700,7 +700,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets sAFETReimbursementEventList
      *
-     * @return \B1\AmazonSPAPI\Model\SAFETReimbursementEventList
+     * @return \B1\AmazonSPAPI\Model\SAFETReimbursementEvent[]
      */
     public function getSAFETReimbursementEventList()
     {
@@ -724,7 +724,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets sellerReviewEnrollmentPaymentEventList
      *
-     * @return \B1\AmazonSPAPI\Model\SellerReviewEnrollmentPaymentEventList
+     * @return \B1\AmazonSPAPI\Model\SellerReviewEnrollmentPaymentEvent[]
      */
     public function getSellerReviewEnrollmentPaymentEventList()
     {
@@ -748,7 +748,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets fBALiquidationEventList
      *
-     * @return \B1\AmazonSPAPI\Model\FBALiquidationEventList
+     * @return \B1\AmazonSPAPI\Model\FBALiquidationEvent[]
      */
     public function getFBALiquidationEventList()
     {
@@ -772,7 +772,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets couponPaymentEventList
      *
-     * @return \B1\AmazonSPAPI\Model\CouponPaymentEventList
+     * @return \B1\AmazonSPAPI\Model\CouponPaymentEvent[]
      */
     public function getCouponPaymentEventList()
     {
@@ -796,7 +796,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets imagingServicesFeeEventList
      *
-     * @return \B1\AmazonSPAPI\Model\ImagingServicesFeeEventList
+     * @return \B1\AmazonSPAPI\Model\ImagingServicesFeeEvent[]
      */
     public function getImagingServicesFeeEventList()
     {
@@ -820,7 +820,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets networkComminglingTransactionEventList
      *
-     * @return \B1\AmazonSPAPI\Model\NetworkComminglingTransactionEventList
+     * @return \B1\AmazonSPAPI\Model\NetworkComminglingTransactionEvent[]
      */
     public function getNetworkComminglingTransactionEventList()
     {
@@ -844,7 +844,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets affordabilityExpenseEventList
      *
-     * @return \B1\AmazonSPAPI\Model\AffordabilityExpenseEventList
+     * @return \B1\AmazonSPAPI\Model\AffordabilityExpenseEvent[]
      */
     public function getAffordabilityExpenseEventList()
     {
@@ -868,7 +868,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets affordabilityExpenseReversalEventList
      *
-     * @return \B1\AmazonSPAPI\Model\AffordabilityExpenseEventList
+     * @return \B1\AmazonSPAPI\Model\AffordabilityExpenseEvent[]
      */
     public function getAffordabilityExpenseReversalEventList()
     {
@@ -892,7 +892,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets trialShipmentEventList
      *
-     * @return \B1\AmazonSPAPI\Model\TrialShipmentEventList
+     * @return \B1\AmazonSPAPI\Model\TrialShipmentEvent[]
      */
     public function getTrialShipmentEventList()
     {
@@ -940,7 +940,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets taxWithholdingEventList
      *
-     * @return \B1\AmazonSPAPI\Model\TaxWithholdingEventList
+     * @return \B1\AmazonSPAPI\Model\TaxWithholdingEvent[]
      */
     public function getTaxWithholdingEventList()
     {
@@ -964,7 +964,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets removalShipmentEventList
      *
-     * @return \B1\AmazonSPAPI\Model\RemovalShipmentEventList
+     * @return \B1\AmazonSPAPI\Model\RemovalShipmentEvent[]
      */
     public function getRemovalShipmentEventList()
     {
@@ -988,7 +988,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess
     /**
      * Gets removalShipmentAdjustmentEventList
      *
-     * @return \B1\AmazonSPAPI\Model\RemovalShipmentAdjustmentEventList
+     * @return \B1\AmazonSPAPI\Model\RemovalShipmentAdjustmentEvent[]
      */
     public function getRemovalShipmentAdjustmentEventList()
     {

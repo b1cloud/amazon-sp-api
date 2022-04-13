@@ -236,6 +236,8 @@ class ObjectSerializer
         if (null === $data) {
             return null;
         } elseif (substr($class, 0, 4) === 'map[') { // for associative array e.g. map[string,int]
+            $data = is_string($data) ? json_decode($data) : $data;
+            settype($data, 'array');
             $inner = substr($class, 4, -1);
             $deserialized = [];
             if (strrpos($inner, ",") !== false) {
@@ -247,6 +249,10 @@ class ObjectSerializer
             }
             return $deserialized;
         } elseif (strcasecmp(substr($class, -2), '[]') === 0) {
+            $data = is_string($data) ? json_decode($data, true) : $data;
+            if (!is_array($data)) {
+                throw new \InvalidArgumentException("Invalid array '$class'");
+            }
             $subClass = substr($class, 0, -2);
             $values = [];
             foreach ($data as $key => $value) {
@@ -269,6 +275,10 @@ class ObjectSerializer
                 return null;
             }
         } elseif (in_array($class, ['DateTime', 'bool', 'boolean', 'byte', 'double', 'float', 'int', 'integer', 'mixed', 'number', 'object', 'string', 'void'], true)) {
+            // Boolean value "false" will get parsed to 1 instead of 0 by default
+            if (($class === 'bool' || $class === 'boolean') && $data === 'false') {
+                $data = false;
+            }
             settype($data, $class);
             return $data;
         } elseif ($class === '\SplFileObject') {
@@ -296,6 +306,7 @@ class ObjectSerializer
             }
             return $data;
         } else {
+            $data = is_string($data) ? json_decode($data) : $data;
             // If a discriminator is defined and points to a valid subclass, use it.
             $discriminator = $class::DISCRIMINATOR;
             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {

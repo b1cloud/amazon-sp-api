@@ -754,7 +754,7 @@ class ReportsApi
             throw new \InvalidArgumentException('Missing the required parameter $body when calling createReport');
         }
 
-        $resourcePath = '/reports/2020-09-04/reports';
+        $resourcePath = '/reports/2021-06-30/reports';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1015,7 +1015,7 @@ class ReportsApi
             throw new \InvalidArgumentException('Missing the required parameter $report_id when calling getReport');
         }
 
-        $resourcePath = '/reports/2020-09-04/reports/{reportId}';
+        $resourcePath = '/reports/2021-06-30/reports/{reportId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1117,7 +1117,7 @@ class ReportsApi
             throw new \InvalidArgumentException('Missing the required parameter $report_document_id when calling getReportDocument');
         }
 
-        $resourcePath = '/reports/2020-09-04/documents/{reportDocumentId}';
+        $resourcePath = '/reports/2021-06-30/documents/{reportDocumentId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1219,7 +1219,7 @@ class ReportsApi
             throw new \InvalidArgumentException('Missing the required parameter $report_schedule_id when calling getReportSchedule');
         }
 
-        $resourcePath = '/reports/2020-09-04/schedules/{reportScheduleId}';
+        $resourcePath = '/reports/2021-06-30/schedules/{reportScheduleId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1321,7 +1321,7 @@ class ReportsApi
             throw new \InvalidArgumentException('Missing the required parameter $report_types when calling getReportSchedules');
         }
 
-        $resourcePath = '/reports/2020-09-04/schedules';
+        $resourcePath = '/reports/2021-06-30/schedules';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

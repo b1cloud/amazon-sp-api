@@ -116,7 +116,7 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrderResponse';
         $request = $this->getOrderRequest($orderId);
-        return $this->sendRequest($request, GetOrderResponse::class);
+        return $this->sendRequest($request, $returnType);
     }
 
     /**
@@ -153,7 +153,7 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrderResponse';
         $request = $this->getOrderRequest($orderId);
-        return $this->sendRequestAsync($request, GetOrderResponse::class);
+        return $this->sendRequestAsync($request, $returnType);
     }
 
     /**
@@ -189,76 +189,7 @@ class OrdersApi
                 $resourcePath
             );
         }
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->generateRequest($multipart, $formParams, $queryParams, $resourcePath, $headerParams, 'GET', $httpBody);
     }
 
     /**
@@ -289,7 +220,7 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrderAddressResponse';
         $request = $this->getOrderAddressRequest($orderId);
-        return $this->sendRequest($request, \B1\AmazonSPAPI\Model\GetOrderAddressResponse::class);
+        return $this->sendRequest($request, $returnType);
     }
 
     /**
@@ -463,7 +394,7 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrderBuyerInfoResponse';
         $request = $this->getOrderBuyerInfoRequest($orderId);
-        return $this->sendRequest($request, \B1\AmazonSPAPI\Model\GetOrderBuyerInfoResponse::class);
+        return $this->sendRequest($request, $returnType);
     }
 
     /**
@@ -500,7 +431,7 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrderBuyerInfoResponse';
         $request = $this->getOrderBuyerInfoRequest($orderId);
-        return $this->sendRequestAsync($request, \B1\AmazonSPAPI\Model\GetOrderBuyerInfoResponse::class);
+        return $this->sendRequestAsync($request, $returnType);
     }
 
     /**
@@ -536,76 +467,7 @@ class OrdersApi
                 $resourcePath
             );
         }
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->generateRequest($multipart, $formParams, $queryParams, $resourcePath, $headerParams, 'GET', $httpBody);
     }
 
     /**
@@ -638,7 +500,7 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrderItemsResponse';
         $request = $this->getOrderItemsRequest($orderId, $nextToken);
-        return $this->sendRequest($request, \B1\AmazonSPAPI\Model\GetOrderItemsResponse::class);
+        return $this->sendRequest($request, $returnType);
     }
 
     /**
@@ -677,7 +539,7 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrderItemsResponse';
         $request = $this->getOrderItemsRequest($orderId, $nextToken);
-        return $this->sendRequestAsync($request, \B1\AmazonSPAPI\Model\GetOrderItemsResponse::class);
+        return $this->sendRequestAsync($request, $returnType);
     }
 
     /**
@@ -719,75 +581,7 @@ class OrdersApi
             );
         }
 
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->generateRequest($multipart, $formParams, $queryParams, $resourcePath, $headerParams, 'GET', $httpBody);
     }
 
     /**
@@ -820,7 +614,7 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrderItemsBuyerInfoResponse';
         $request = $this->getOrderItemsBuyerInfoRequest($orderId, $nextToken);
-        return $this->sendRequest($request, \B1\AmazonSPAPI\Model\GetOrderItemsBuyerInfoResponse::class);
+        return $this->sendRequest($request, $returnType);
     }
 
     /**
@@ -859,7 +653,7 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrderItemsBuyerInfoResponse';
         $request = $this->getOrderItemsBuyerInfoRequest($orderId, $nextToken);
-        return $this->sendRequestAsync($request, \B1\AmazonSPAPI\Model\GetOrderItemsBuyerInfoResponse::class);
+        return $this->sendRequestAsync($request, $returnType);
     }
 
     /**
@@ -901,75 +695,7 @@ class OrdersApi
             );
         }
 
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-
-            if($headers['Content-Type'] === 'application/json') {
-                // \stdClass has no __toString(), so we should encode it manually
-                if ($httpBody instanceof \stdClass) {
-                    $httpBody = \GuzzleHttp\json_encode($httpBody);
-                }
-                // array has no __toString(), so we should encode it manually
-                if(is_array($httpBody)) {
-                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
-                }
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
+        return $this->generateRequest($multipart, $formParams, $queryParams, $resourcePath, $headerParams, 'GET', $httpBody);
     }
 
     /**
@@ -1032,7 +758,7 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrdersResponse';
         $request = $this->getOrdersRequest($marketplaceIds, $createdAfter, $createdBefore, $lastUpdatedAfter, $lastUpdatedBefore, $orderStatuses, $fulfillmentChannels, $paymentMethods, $buyerEmail, $sellerOrderId, $maxResultsPerPage, $easyShipShipmentStatuses, $nextToken, $amazonOrderIds, $actualFulfillmentSupplySourceId, $isISPU, $storeChainStoreId);
-        return $this->sendRequest($request, GetOrdersResponse::class);
+        return $this->sendRequest($request, $returnType);
 
     }
 
@@ -1102,7 +828,7 @@ class OrdersApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrdersResponse';
         $request = $this->getOrdersRequest($marketplaceIds, $createdAfter, $createdBefore, $lastUpdatedAfter, $lastUpdatedBefore, $orderStatuses, $fulfillmentChannels, $paymentMethods, $buyerEmail, $sellerOrderId, $maxResultsPerPage, $easyShipShipmentStatuses, $nextToken, $amazonOrderIds, $actualFulfillmentSupplySourceId, $isISPU, $storeChainStoreId);
-        return $this->sendRequestAsync($request, \B1\AmazonSPAPI\Model\GetOrdersResponse::class);
+        return $this->sendRequestAsync($request, $returnType);
     }
 
     /**

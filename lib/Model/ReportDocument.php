@@ -333,7 +333,7 @@ class ReportDocument implements ModelInterface, ArrayAccess
     /**
      * Gets encryption_details.
      */
-    public function getEncryptionDetails() : ReportDocumentEncryptionDetails
+    public function getEncryptionDetails()
     {
         return $this->container['encryptionDetails'];
     }
@@ -343,7 +343,7 @@ class ReportDocument implements ModelInterface, ArrayAccess
      *
      * @param \B1\AmazonSPAPI\Model\ReportDocumentEncryptionDetails $encryption_details encryption_details
      */
-    public function setEncryptionDetails(ReportDocumentEncryptionDetails $encryption_details) : self
+    public function setEncryptionDetails($encryption_details) : self
     {
         $this->container['encryptionDetails'] = $encryption_details;
 

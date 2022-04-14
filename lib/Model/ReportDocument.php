@@ -60,7 +60,7 @@ class ReportDocument implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'reportDocumentId' => 'string',
         'url' => 'string',
-        'encryptionDetails' => '\B1\AmazonSPAPI\ReportDocumentEncryptionDetails',
+        'encryptionDetails' => '\B1\AmazonSPAPI\Model\ReportDocumentEncryptionDetails',
         'compressionAlgorithm' => 'string'
     ];
 

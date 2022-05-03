@@ -121,7 +121,7 @@ class AuthorizationApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetAuthorizationCodeResponse';
         $request = $this->getAuthorizationCodeRequest($sellingPartnerId, $developerId, $mwsAuthToken);
-        return $this->sendRequest($request, GetAuthorizationCodeResponse::class);
+        return $this->sendRequest($request, $returnType);
 
     }
 
@@ -163,7 +163,7 @@ class AuthorizationApi
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetAuthorizationCodeResponse';
         $request = $this->getAuthorizationCodeRequest($sellingPartnerId, $developerId, $mwsAuthToken);
-        return $this->sendRequestAsync($request, GetAuthorizationCodeResponse::class);
+        return $this->sendRequestAsync($request, $returnType);
     }
 
     /**

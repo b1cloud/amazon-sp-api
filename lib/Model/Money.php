@@ -44,7 +44,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @property string $currencyCode
  * @property string $amount
  */
-class Money implements ModelInterface, ArrayAccess
+class Money  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

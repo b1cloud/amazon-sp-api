@@ -41,7 +41,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class TaxWithholdingEvent implements ModelInterface, ArrayAccess
+class TaxWithholdingEvent  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

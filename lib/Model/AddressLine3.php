@@ -41,7 +41,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AddressLine3 implements ModelInterface, ArrayAccess
+class AddressLine3  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

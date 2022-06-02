@@ -41,7 +41,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmallAndLightEligibility implements ModelInterface, ArrayAccess
+class SmallAndLightEligibility  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

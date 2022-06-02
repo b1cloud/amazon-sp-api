@@ -88,7 +88,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @property AutomatedShippingSettings $automatedShippingSettings
  */
 
-class Order implements ModelInterface, ArrayAccess
+class Order  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

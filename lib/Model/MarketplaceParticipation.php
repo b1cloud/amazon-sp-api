@@ -40,7 +40,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class MarketplaceParticipation implements ModelInterface, ArrayAccess
+class MarketplaceParticipation  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

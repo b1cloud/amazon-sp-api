@@ -45,7 +45,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @property string $nextToken
  * @property string $amazonOrderId
  */
-class OrderItemsList implements ModelInterface, ArrayAccess
+class OrderItemsList  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

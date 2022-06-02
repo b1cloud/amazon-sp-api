@@ -47,7 +47,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @property string $purchaseOrderNumber
  * @property BuyerTaxInfo $buyerTaxInfo
  */
-class BuyerInfo implements ModelInterface, ArrayAccess
+class BuyerInfo  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

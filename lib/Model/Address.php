@@ -53,7 +53,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @property string $countryCode
  * @property string $phone
  */
-class Address implements ModelInterface, ArrayAccess
+class Address  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

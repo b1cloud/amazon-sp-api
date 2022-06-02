@@ -40,7 +40,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ListCatalogCategoriesResponse implements ModelInterface, ArrayAccess
+class ListCatalogCategoriesResponse  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

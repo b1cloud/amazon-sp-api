@@ -45,7 +45,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @property string $taxingRegion
  * @property TaxClassification[] $taxClassifications
  */
-class BuyerTaxInfo implements ModelInterface, ArrayAccess
+class BuyerTaxInfo  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

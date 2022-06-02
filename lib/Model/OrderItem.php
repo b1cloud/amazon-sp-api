@@ -75,7 +75,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @property string $deemedResellerCategory
  * @property ItemBuyerInfo $buyerInfo
  */
-class OrderItem implements ModelInterface, ArrayAccess
+class OrderItem  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

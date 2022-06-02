@@ -40,8 +40,13 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @package  B1\AmazonSPAPI
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
+ *
+ * @property string $reportDocumentId
+ * @property string $url
+ * @property ReportDocumentEncryptionDetails $encryptionDetails
+ * @property string $compressionAlgorithm
  */
-class ReportDocument implements ModelInterface, ArrayAccess
+class ReportDocument  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

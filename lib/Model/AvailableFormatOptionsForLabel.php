@@ -40,7 +40,7 @@ use \B1\AmazonSPAPI\ObjectSerializer;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AvailableFormatOptionsForLabel implements ModelInterface, ArrayAccess
+class AvailableFormatOptionsForLabel  extends BaseModel implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 

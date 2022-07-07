@@ -315,6 +315,7 @@ class ObjectSerializer
                     $class = $subclass;
                 }
             }
+
             $instance = new $class();
             foreach ($instance::swaggerTypes() as $property => $type) {
                 $propertySetter = $instance::setters()[$property];
@@ -327,6 +328,11 @@ class ObjectSerializer
                 if (isset($propertyValue)) {
                     $instance->$propertySetter(self::deserialize($propertyValue, $type, null));
                 }
+
+                if ($httpHeaders !== null && method_exists($class,'setHeaders')) {
+                    $instance->setHeaders($httpHeaders);
+                }
+
             }
             return $instance;
         }

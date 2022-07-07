@@ -120,7 +120,7 @@ trait SellingPartnerApiRequest
             }
             $this->writeDebug($content);
             return [
-                ObjectSerializer::deserialize($content, $returnType, []),
+                ObjectSerializer::deserialize($content, $returnType, $response->getHeaders()),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];

@@ -119,6 +119,7 @@ class GetOrderResponse  extends BaseModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'headers' => 'headers',
         'payload' => 'getPayload',
         'errors' => 'getErrors'
     ];
@@ -163,10 +164,6 @@ class GetOrderResponse  extends BaseModel implements ModelInterface, ArrayAccess
     {
         return self::$swaggerModelName;
     }
-
-
-
-
 
     /**
      * Associative array for storing property values
@@ -258,6 +255,11 @@ class GetOrderResponse  extends BaseModel implements ModelInterface, ArrayAccess
 
         return $this;
     }
+    public function getHeaders()
+    {
+        return $this->container['headers'];
+    }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

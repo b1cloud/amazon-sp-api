@@ -120,7 +120,8 @@ class GetOrdersResponse  extends BaseModel implements ModelInterface, ArrayAcces
      */
     protected static $getters = [
         'payload' => 'getPayload',
-        'errors' => 'getErrors'
+        'errors' => 'getErrors',
+        'headers' => 'getHeaders',
     ];
 
     /**
@@ -258,6 +259,12 @@ class GetOrdersResponse  extends BaseModel implements ModelInterface, ArrayAcces
 
         return $this;
     }
+
+    public function getHeaders()
+    {
+        return $this->container['headers'];
+    }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

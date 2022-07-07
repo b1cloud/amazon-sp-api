@@ -99,6 +99,7 @@ class GetOrdersResponse  extends BaseModel implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
+        'headers' => 'headers',
         'payload' => 'payload',
         'errors' => 'errors'
     ];

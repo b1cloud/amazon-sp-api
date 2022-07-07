@@ -110,6 +110,7 @@ class GetOrdersResponse  extends BaseModel implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
+        'headers' => 'setHeaders',
         'payload' => 'setPayload',
         'errors' => 'setErrors'
     ];
@@ -264,6 +265,12 @@ class GetOrdersResponse  extends BaseModel implements ModelInterface, ArrayAcces
     public function getHeaders()
     {
         return $this->container['headers'];
+    }
+
+    public function setHeaders($headers)
+    {
+        $this->container['headers'] = $headers;
+        return $this;
     }
 
     /**

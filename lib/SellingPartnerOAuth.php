@@ -39,9 +39,10 @@ class SellingPartnerOAuth
         $response = $client->request('POST', 'https://api.amazon.com/auth/o2/token', $options);
 
         $body = $response->getBody()->getContents();
+        $code = $response->getStatusCode();
         $bodyAsJson = json_decode($body, true);
         if (isset($bodyAsJson['error_description'])) {
-            throw new SellingPartnerOAuthException($bodyAsJson['error_description'], $bodyAsJson['error']);
+            throw new SellingPartnerOAuthException($bodyAsJson['error_description'], $code);
         }
 
         return $bodyAsJson['access_token'];
@@ -77,8 +78,9 @@ class SellingPartnerOAuth
 
         $body = $response->getBody()->getContents();
         $bodyAsJson = json_decode($body, true);
+        $code = $response->getStatusCode();
         if (isset($bodyAsJson['error_description'])) {
-            throw new SellingPartnerOAuthException($bodyAsJson['error_description'], $bodyAsJson['error']);
+            throw new SellingPartnerOAuthException($bodyAsJson['error_description'], $code);
         }
 
         return $bodyAsJson['refresh_token'];

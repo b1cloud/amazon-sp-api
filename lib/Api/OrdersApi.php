@@ -725,7 +725,7 @@ class OrdersApi
      */
     public function getOrders($marketplaceIds, $createdAfter = null, $createdBefore = null, $lastUpdatedAfter = null, $lastUpdatedBefore = null, $orderStatuses = null, $fulfillmentChannels = null, $paymentMethods = null, $buyerEmail = null, $sellerOrderId = null, $maxResultsPerPage = null, $easyShipShipmentStatuses = null, $nextToken = null, $amazonOrderIds = null, $actualFulfillmentSupplySourceId = null, $isISPU = null, $storeChainStoreId = null, $dataElements = null)
     {
-        list($response) = $this->getOrdersWithHttpInfo($marketplaceIds, $createdAfter, $createdBefore, $lastUpdatedAfter, $lastUpdatedBefore, $orderStatuses, $fulfillmentChannels, $paymentMethods, $buyerEmail, $sellerOrderId, $maxResultsPerPage, $easyShipShipmentStatuses, $nextToken, $amazonOrderIds, $actualFulfillmentSupplySourceId, $isISPU, $storeChainStoreId);
+        list($response) = $this->getOrdersWithHttpInfo($marketplaceIds, $createdAfter, $createdBefore, $lastUpdatedAfter, $lastUpdatedBefore, $orderStatuses, $fulfillmentChannels, $paymentMethods, $buyerEmail, $sellerOrderId, $maxResultsPerPage, $easyShipShipmentStatuses, $nextToken, $amazonOrderIds, $actualFulfillmentSupplySourceId, $isISPU, $storeChainStoreId, $dataElements);
         return $response;
     }
 

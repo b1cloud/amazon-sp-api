@@ -723,7 +723,7 @@ class OrdersApi
      * @throws \InvalidArgumentException
      * @return \B1\AmazonSPAPI\Model\GetOrdersResponse
      */
-    public function getOrders($marketplaceIds, $createdAfter = null, $createdBefore = null, $lastUpdatedAfter = null, $lastUpdatedBefore = null, $orderStatuses = null, $fulfillmentChannels = null, $paymentMethods = null, $buyerEmail = null, $sellerOrderId = null, $maxResultsPerPage = null, $easyShipShipmentStatuses = null, $nextToken = null, $amazonOrderIds = null, $actualFulfillmentSupplySourceId = null, $isISPU = null, $storeChainStoreId = null)
+    public function getOrders($marketplaceIds, $createdAfter = null, $createdBefore = null, $lastUpdatedAfter = null, $lastUpdatedBefore = null, $orderStatuses = null, $fulfillmentChannels = null, $paymentMethods = null, $buyerEmail = null, $sellerOrderId = null, $maxResultsPerPage = null, $easyShipShipmentStatuses = null, $nextToken = null, $amazonOrderIds = null, $actualFulfillmentSupplySourceId = null, $isISPU = null, $storeChainStoreId = null, $dataElements = null)
     {
         list($response) = $this->getOrdersWithHttpInfo($marketplaceIds, $createdAfter, $createdBefore, $lastUpdatedAfter, $lastUpdatedBefore, $orderStatuses, $fulfillmentChannels, $paymentMethods, $buyerEmail, $sellerOrderId, $maxResultsPerPage, $easyShipShipmentStatuses, $nextToken, $amazonOrderIds, $actualFulfillmentSupplySourceId, $isISPU, $storeChainStoreId);
         return $response;
@@ -754,10 +754,10 @@ class OrdersApi
      * @throws \InvalidArgumentException
      * @return array of \B1\AmazonSPAPI\Model\GetOrdersResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOrdersWithHttpInfo($marketplaceIds, $createdAfter = null, $createdBefore = null, $lastUpdatedAfter = null, $lastUpdatedBefore = null, $orderStatuses = null, $fulfillmentChannels = null, $paymentMethods = null, $buyerEmail = null, $sellerOrderId = null, $maxResultsPerPage = null, $easyShipShipmentStatuses = null, $nextToken = null, $amazonOrderIds = null, $actualFulfillmentSupplySourceId = null, $isISPU = null, $storeChainStoreId = null)
+    public function getOrdersWithHttpInfo($marketplaceIds, $createdAfter = null, $createdBefore = null, $lastUpdatedAfter = null, $lastUpdatedBefore = null, $orderStatuses = null, $fulfillmentChannels = null, $paymentMethods = null, $buyerEmail = null, $sellerOrderId = null, $maxResultsPerPage = null, $easyShipShipmentStatuses = null, $nextToken = null, $amazonOrderIds = null, $actualFulfillmentSupplySourceId = null, $isISPU = null, $storeChainStoreId = null, $dataElements = null)
     {
         $returnType = '\B1\AmazonSPAPI\Model\GetOrdersResponse';
-        $request = $this->getOrdersRequest($marketplaceIds, $createdAfter, $createdBefore, $lastUpdatedAfter, $lastUpdatedBefore, $orderStatuses, $fulfillmentChannels, $paymentMethods, $buyerEmail, $sellerOrderId, $maxResultsPerPage, $easyShipShipmentStatuses, $nextToken, $amazonOrderIds, $actualFulfillmentSupplySourceId, $isISPU, $storeChainStoreId);
+        $request = $this->getOrdersRequest($marketplaceIds, $createdAfter, $createdBefore, $lastUpdatedAfter, $lastUpdatedBefore, $orderStatuses, $fulfillmentChannels, $paymentMethods, $buyerEmail, $sellerOrderId, $maxResultsPerPage, $easyShipShipmentStatuses, $nextToken, $amazonOrderIds, $actualFulfillmentSupplySourceId, $isISPU, $storeChainStoreId,$dataElements);
         return $this->sendRequest($request, $returnType);
 
     }
@@ -855,7 +855,7 @@ class OrdersApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getOrdersRequest($marketplaceIds, $createdAfter = null, $createdBefore = null, $lastUpdatedAfter = null, $lastUpdatedBefore = null, $orderStatuses = null, $fulfillmentChannels = null, $paymentMethods = null, $buyerEmail = null, $sellerOrderId = null, $maxResultsPerPage = null, $easyShipShipmentStatuses = null, $nextToken = null, $amazonOrderIds = null, $actualFulfillmentSupplySourceId = null, $isISPU = null, $storeChainStoreId = null)
+    protected function getOrdersRequest($marketplaceIds, $createdAfter = null, $createdBefore = null, $lastUpdatedAfter = null, $lastUpdatedBefore = null, $orderStatuses = null, $fulfillmentChannels = null, $paymentMethods = null, $buyerEmail = null, $sellerOrderId = null, $maxResultsPerPage = null, $easyShipShipmentStatuses = null, $nextToken = null, $amazonOrderIds = null, $actualFulfillmentSupplySourceId = null, $isISPU = null, $storeChainStoreId = null, $dataElements = null)
     {
         // verify the required parameter 'marketplaceIds' is set
         if ($marketplaceIds === null || (is_array($marketplaceIds) && count($marketplaceIds) === 0)) {
@@ -965,6 +965,15 @@ class OrdersApi
         if ($storeChainStoreId !== null) {
             $queryParams['StoreChainStoreId'] = ObjectSerializer::toQueryValue($storeChainStoreId);
         }
+
+        // query params
+        if (is_array($dataElements)) {
+            $dataElements = ObjectSerializer::serializeCollection($dataElements, 'form', true);
+        }
+        if ($dataElements !== null) {
+            $queryParams['dataElements'] = $dataElements;
+        }
+
 
         return $this->generateRequest($multipart, $formParams, $queryParams, $resourcePath, $headerParams, 'GET', $httpBody);
     }

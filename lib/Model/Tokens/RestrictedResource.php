@@ -54,7 +54,7 @@ class RestrictedResource extends BaseModel implements ModelInterface, ArrayAcces
     protected static $swaggerTypes = [
         'method' => 'string',
         'path' => 'string',
-        'data_elements' => 'string[]'
+        'dataElements' => 'string[]'
     ];
 
     /**
@@ -67,7 +67,7 @@ class RestrictedResource extends BaseModel implements ModelInterface, ArrayAcces
     protected static $swaggerFormats = [
         'method' => null,
         'path' => null,
-        'data_elements' => null
+        'dataElements' => null
     ];
 
     /**

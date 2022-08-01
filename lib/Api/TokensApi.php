@@ -195,7 +195,7 @@ class TokensApi
         $headerParams = [];
         $httpBody = $body;
         $multipart = false;
-        return $this->generateRequest($multipart, $formParams, $queryParams, $resourcePath, $headerParams, 'GET', $httpBody);
+        return $this->generateRequest($multipart, $formParams, $queryParams, $resourcePath, $headerParams, 'POST', $httpBody);
 
     }
 

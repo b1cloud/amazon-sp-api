@@ -897,31 +897,31 @@ class OrdersApi
         }
         // query params
         if (is_array($orderStatuses)) {
-            $queryParams['OrderStatuses'] = $orderStatuses;
-        } else
+            $orderStatuses = ObjectSerializer::toQueryValue($orderStatuses);
+        }
         if ($orderStatuses !== null) {
-            $queryParams['OrderStatuses'] = ObjectSerializer::toQueryValue($orderStatuses);
+            $queryParams['OrderStatuses'] = $orderStatuses;
         }
         // query params
         if (is_array($marketplaceIds)) {
-            $queryParams['MarketplaceIds'] = $marketplaceIds;
-        } else
+            $marketplaceIds = ObjectSerializer::toQueryValue($marketplaceIds);
+        }
         if ($marketplaceIds !== null) {
-            $queryParams['MarketplaceIds'] = ObjectSerializer::toQueryValue($marketplaceIds);
+            $queryParams['MarketplaceIds'] = $marketplaceIds;
         }
         // query params
         if (is_array($fulfillmentChannels)) {
-            $queryParams['FulfillmentChannels'] = $fulfillmentChannels;
-        } else
+            $fulfillmentChannels= ObjectSerializer::toQueryValue($fulfillmentChannels);
+        }
         if ($fulfillmentChannels !== null) {
-            $queryParams['FulfillmentChannels'] = ObjectSerializer::toQueryValue($fulfillmentChannels);
+            $queryParams['FulfillmentChannels'] = $fulfillmentChannels;
         }
         // query params
         if (is_array($paymentMethods)) {
-            $queryParams['PaymentMethods'] = $paymentMethods;
-        } else
+            $paymentMethods = ObjectSerializer::toQueryValue($paymentMethods);
+        }
         if ($paymentMethods !== null) {
-            $queryParams['PaymentMethods'] = ObjectSerializer::toQueryValue($paymentMethods);
+            $queryParams['PaymentMethods'] = $paymentMethods;
         }
         // query params
         if ($buyerEmail !== null) {
@@ -937,10 +937,10 @@ class OrdersApi
         }
         // query params
         if (is_array($easyShipShipmentStatuses)) {
-            $queryParams['EasyShipShipmentStatuses'] = $easyShipShipmentStatuses;
-        } else
+            $easyShipShipmentStatuses = ObjectSerializer::toQueryValue($easyShipShipmentStatuses);
+        }
         if ($easyShipShipmentStatuses !== null) {
-            $queryParams['EasyShipShipmentStatuses'] = ObjectSerializer::toQueryValue($easyShipShipmentStatuses);
+            $queryParams['EasyShipShipmentStatuses'] = $easyShipShipmentStatuses;
         }
         // query params
         if ($nextToken !== null) {
@@ -948,10 +948,10 @@ class OrdersApi
         }
         // query params
         if (is_array($amazonOrderIds)) {
-            $queryParams['AmazonOrderIds'] = $amazonOrderIds;
-        } else
+            $amazonOrderIds = ObjectSerializer::toQueryValue($amazonOrderIds);
+        }
         if ($amazonOrderIds !== null) {
-            $queryParams['AmazonOrderIds'] = ObjectSerializer::toQueryValue($amazonOrderIds);
+            $queryParams['AmazonOrderIds'] = $amazonOrderIds;
         }
         // query params
         if ($actualFulfillmentSupplySourceId !== null) {

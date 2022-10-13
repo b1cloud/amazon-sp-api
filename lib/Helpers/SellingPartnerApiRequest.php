@@ -11,6 +11,7 @@ use GuzzleHttp\Psr7\Query;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Utils;
+use Psr\Http\Message\ResponseInterface;
 
 trait SellingPartnerApiRequest
 {
@@ -99,6 +100,7 @@ trait SellingPartnerApiRequest
         try {
             $options = $this->createHttpClientOption();
             try {
+                $this->writeRequestDebug($request);
                 $response = $this->client->send($request, $options);
             } catch (RequestException $e) {
                 throw new ApiException("[{$e->getCode()}] {$e->getMessage()}", $e->getCode(), $e->getResponse() ? $e->getResponse()->getHeaders() : null, $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null);
@@ -118,13 +120,14 @@ trait SellingPartnerApiRequest
                     $content = json_decode($content);
                 }
             }
-            $this->writeDebug($content);
+            $this->writeResponseDebug($response);
             return [
                 ObjectSerializer::deserialize($content, $returnType, $response->getHeaders()),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
         } catch (ApiException $e) {
+            $this->writeExceptionDebug($e);
             switch ($e->getCode()) {
                 case 503:
                 case 500:
@@ -157,10 +160,6 @@ trait SellingPartnerApiRequest
     {
         $options = [];
         if ($this->config->getDebug()) {
-            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
-            }
         }
 
         return $options;
@@ -207,10 +206,47 @@ trait SellingPartnerApiRequest
      * @param mixed $data
      * @return void
      */
-    private function writeDebug($data)
+    private function writeResponseDebug(ResponseInterface $response)
     {
         if ($this->config->getDebug()) {
-            file_put_contents($this->config->getDebugFile(), '[' . date('Y-m-d H:i:s') . ']: ' . print_r($data, true) . "\n", FILE_APPEND);
+            $debug = "\n[" . date('Y-m-d H:i:s') . '] Response:' . "\n";
+            $debug .= "< HTTP/{$response->getProtocolVersion()} {$response->getStatusCode()}\n";
+            foreach ($response->getHeaders() as $headerName => $header) {
+                $debug .= "< {$headerName}: " . $header[0] . "\n";
+            }
+            $responseBody = $response->getBody();
+            file_put_contents($this->config->getDebugFile(), $debug . $responseBody . "\n\n", FILE_APPEND);
         }
+    }
+
+    private function writeRequestDebug(Request $request)
+    {
+        if ($this->config->getDebug()) {
+            $postPayload = (string)$request->getBody();
+            $debug = "[" . date('Y-m-d H:i:s') . "] Request:\n";
+            $debug .= "> {$request->getMethod()} " . $request->getUri()->getPath() . "\n";
+            $debug .= "Host: " . $request->getUri()->getHost() . "\n";
+            foreach ($request->getHeaders() as $headerName => $header) {
+                $debug .= "{$headerName}: " . $header[0] . "\n";
+            }
+            if ($postPayload) {
+                $debug .= 'Payload: ' . $postPayload . "\n\n";
+            }
+            file_put_contents($this->config->getDebugFile(), $debug, FILE_APPEND);
+        }
+    }
+
+    private function writeExceptionDebug(ApiException $e)
+    {
+        if ($this->config->getDebug()) {
+            $debug = "\n[" . date('Y-m-d H:i:s') . '] Response:' . "\n";
+            $debug .= "< {$e->getCode()}\n";
+            foreach ($e->getResponseHeaders() as $headerName => $header) {
+                $debug .= "< {$headerName}: " . $header[0] . "\n";
+            }
+            $responseBody = $e->getResponseBody();
+            file_put_contents($this->config->getDebugFile(), $debug . $responseBody . "\n\n", FILE_APPEND);
+        }
+
     }
 }

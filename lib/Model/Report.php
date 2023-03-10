@@ -149,6 +149,7 @@ class Report  extends BaseModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'headers' => 'setHeaders',
         'marketplaceIds' => 'setMarketplaceIds',
         'reportId' => 'setReportId',
         'reportType' => 'setReportType',
@@ -327,6 +328,19 @@ class Report  extends BaseModel implements ModelInterface, ArrayAccess
     public function getHeaders()
     {
         return $this->container['headers'];
+    }
+
+    /**
+     * Sets API response headers (only relevant to response models)
+     *
+     * @param array[string => string] $headers Associative array of response headers.
+     *
+     * @return self
+     */
+    public function setHeaders($headers)
+    {
+        $this->container['headers'] = $headers;
+        return $this;
     }
 
     /**

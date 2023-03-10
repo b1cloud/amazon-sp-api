@@ -110,6 +110,7 @@ class GetReportsResponse  extends BaseModel implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $setters = [
+        'headers' => 'setHeaders',
         'reports' => 'setReports',
         'nextToken' => 'setNextToken'
     ];
@@ -223,6 +224,19 @@ class GetReportsResponse  extends BaseModel implements ModelInterface, ArrayAcce
     public function getHeaders()
     {
         return $this->container['headers'];
+    }
+
+    /**
+     * Sets API response headers (only relevant to response models)
+     *
+     * @param array[string => string] $headers Associative array of response headers.
+     *
+     * @return self
+     */
+    public function setHeaders($headers)
+    {
+        $this->container['headers'] = $headers;
+        return $this;
     }
 
     /**

@@ -129,6 +129,7 @@ class Report  extends BaseModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'headers' => 'headers',
         'marketplaceIds' => 'marketplaceIds',
         'reportId' => 'reportId',
         'reportType' => 'reportType',
@@ -167,6 +168,7 @@ class Report  extends BaseModel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'headers' => 'getHeaders',
         'marketplaceIds' => 'getMarketplaceIds',
         'reportId' => 'getReportId',
         'reportType' => 'getReportType',
@@ -317,6 +319,15 @@ class Report  extends BaseModel implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+    /**
+     * Gets API response headers
+     *
+     * @return array[string]
+     */
+    public function getHeaders()
+    {
+        return $this->container['headers'];
+    }
 
     /**
      * Gets marketplaceIds

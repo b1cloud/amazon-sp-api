@@ -99,6 +99,7 @@ class GetReportsResponse  extends BaseModel implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $attributeMap = [
+        'headers' => 'headers',
         'reports' => 'reports',
         'nextToken' => 'nextToken'
     ];
@@ -119,6 +120,7 @@ class GetReportsResponse  extends BaseModel implements ModelInterface, ArrayAcce
      * @var string[]
      */
     protected static $getters = [
+        'headers' => 'getHeaders',
         'reports' => 'getReports',
         'nextToken' => 'getNextToken'
     ];
@@ -213,6 +215,15 @@ class GetReportsResponse  extends BaseModel implements ModelInterface, ArrayAcce
         return count($this->listInvalidProperties()) === 0;
     }
 
+    /**
+     * Gets API response headers
+     *
+     * @return array[string]
+     */
+    public function getHeaders()
+    {
+        return $this->container['headers'];
+    }
 
     /**
      * Gets reports

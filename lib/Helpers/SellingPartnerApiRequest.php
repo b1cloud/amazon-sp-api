@@ -227,7 +227,7 @@ trait SellingPartnerApiRequest
             $debug = "[" . date('Y-m-d H:i:s') . "] Request:\n";
             $debug .= "> {$request->getMethod()} " . $request->getUri()->getPath() . "\n";
             if($query) {
-                $debug .= "> Query string: " . $query . "\n";
+                $debug .= "Query string: " . $query . "\n";
             }
             $debug .= "Host: " . $request->getUri()->getHost() . "\n";
             foreach ($request->getHeaders() as $headerName => $header) {

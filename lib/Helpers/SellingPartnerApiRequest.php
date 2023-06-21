@@ -223,8 +223,12 @@ trait SellingPartnerApiRequest
     {
         if ($this->config->getDebug()) {
             $postPayload = (string)$request->getBody();
+            $query = (string)$request->getUri()->getQuery();
             $debug = "[" . date('Y-m-d H:i:s') . "] Request:\n";
             $debug .= "> {$request->getMethod()} " . $request->getUri()->getPath() . "\n";
+            if($query) {
+                $debug .= "> Query string: " . $query . "\n";
+            }
             $debug .= "Host: " . $request->getUri()->getHost() . "\n";
             foreach ($request->getHeaders() as $headerName => $header) {
                 $debug .= "{$headerName}: " . $header[0] . "\n";

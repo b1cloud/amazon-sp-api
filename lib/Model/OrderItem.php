@@ -360,7 +360,9 @@ class OrderItem  extends BaseModel implements ModelInterface, ArrayAccess
     const DEEMED_RESELLER_CATEGORY_CA_MPF = 'CA_MPF';
     const DEEMED_RESELLER_CATEGORY_AU_VOEC = 'AU_VOEC';
     const DEEMED_RESELLER_CATEGORY_SG_VOEC = 'SG_VOEC';
-
+    const DEEMED_RESELLER_CATEGORY_NZ_VOEC = 'NZ_VOEC';
+    const DEEMED_RESELLER_CATEGORY_JE_VOEC = 'JE_VOEC';
+    const DEEMED_RESELLER_CATEGORY_CH_SUPPLIER_IMPORT = 'CH_SUPPLIER_IMPORT';
 
     /**
      * Gets allowable values of the enum
@@ -377,6 +379,9 @@ class OrderItem  extends BaseModel implements ModelInterface, ArrayAccess
             self::DEEMED_RESELLER_CATEGORY_CA_MPF,
             self::DEEMED_RESELLER_CATEGORY_AU_VOEC,
             self::DEEMED_RESELLER_CATEGORY_SG_VOEC,
+            self::DEEMED_RESELLER_CATEGORY_NZ_VOEC,
+            self::DEEMED_RESELLER_CATEGORY_JE_VOEC,
+            self::DEEMED_RESELLER_CATEGORY_CH_SUPPLIER_IMPORT,
             ];
     }
 

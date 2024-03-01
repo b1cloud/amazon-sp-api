@@ -99,6 +99,7 @@ class GetOrderBuyerInfoResponse  extends BaseModel implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
+        'headers' => 'headers',
         'payload' => 'payload',
         'errors' => 'errors'
     ];
@@ -109,6 +110,7 @@ class GetOrderBuyerInfoResponse  extends BaseModel implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
+        'headers' => 'setHeaders',
         'payload' => 'setPayload',
         'errors' => 'setErrors'
     ];
@@ -119,6 +121,7 @@ class GetOrderBuyerInfoResponse  extends BaseModel implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
+        'headers' => 'headers',
         'payload' => 'getPayload',
         'errors' => 'getErrors'
     ];
@@ -163,10 +166,6 @@ class GetOrderBuyerInfoResponse  extends BaseModel implements ModelInterface, Ar
     {
         return self::$swaggerModelName;
     }
-
-
-
-
 
     /**
      * Associative array for storing property values
@@ -258,6 +257,18 @@ class GetOrderBuyerInfoResponse  extends BaseModel implements ModelInterface, Ar
 
         return $this;
     }
+
+    public function getHeaders()
+    {
+        return $this->container['headers'];
+    }
+
+    public function setHeaders($headers)
+    {
+        $this->container['headers'] = $headers;
+        return $this;
+    }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

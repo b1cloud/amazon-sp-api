@@ -332,6 +332,7 @@ class RestrictedResource extends BaseModel implements ModelInterface, ArrayAcces
      *
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->container[$offset]);
@@ -344,6 +345,7 @@ class RestrictedResource extends BaseModel implements ModelInterface, ArrayAcces
      *
      * @return mixed|null
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->container[$offset] ?? null;
@@ -357,6 +359,7 @@ class RestrictedResource extends BaseModel implements ModelInterface, ArrayAcces
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (is_null($offset)) {
@@ -373,6 +376,7 @@ class RestrictedResource extends BaseModel implements ModelInterface, ArrayAcces
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->container[$offset]);

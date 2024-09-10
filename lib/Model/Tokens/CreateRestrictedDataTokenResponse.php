@@ -283,6 +283,7 @@ class CreateRestrictedDataTokenResponse extends BaseModel implements ModelInterf
      *
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->container[$offset]);
@@ -295,6 +296,7 @@ class CreateRestrictedDataTokenResponse extends BaseModel implements ModelInterf
      *
      * @return mixed|null
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->container[$offset] ?? null;
@@ -308,6 +310,7 @@ class CreateRestrictedDataTokenResponse extends BaseModel implements ModelInterf
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (is_null($offset)) {
@@ -324,6 +327,7 @@ class CreateRestrictedDataTokenResponse extends BaseModel implements ModelInterf
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->container[$offset]);

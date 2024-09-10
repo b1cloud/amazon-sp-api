@@ -302,6 +302,7 @@ class ReportDocumentEncryptionDetails implements \ArrayAccess, \JsonSerializable
      *
      * @param int $offset Offset
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset) : bool
     {
         return isset($this->container[$offset]);
@@ -314,6 +315,7 @@ class ReportDocumentEncryptionDetails implements \ArrayAccess, \JsonSerializable
      *
      * @return null|mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->container[$offset] ?? null;
@@ -325,6 +327,7 @@ class ReportDocumentEncryptionDetails implements \ArrayAccess, \JsonSerializable
      * @param null|int $offset Offset
      * @param mixed $value Value to be set
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value) : void
     {
         if (null === $offset) {
@@ -339,6 +342,7 @@ class ReportDocumentEncryptionDetails implements \ArrayAccess, \JsonSerializable
      *
      * @param int $offset Offset
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset) : void
     {
         unset($this->container[$offset]);

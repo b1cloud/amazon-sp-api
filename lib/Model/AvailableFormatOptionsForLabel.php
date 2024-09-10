@@ -209,6 +209,7 @@ class AvailableFormatOptionsForLabel  extends BaseModel implements ModelInterfac
      *
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->container[$offset]);
@@ -221,6 +222,7 @@ class AvailableFormatOptionsForLabel  extends BaseModel implements ModelInterfac
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
@@ -234,6 +236,7 @@ class AvailableFormatOptionsForLabel  extends BaseModel implements ModelInterfac
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (is_null($offset)) {
@@ -250,6 +253,7 @@ class AvailableFormatOptionsForLabel  extends BaseModel implements ModelInterfac
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->container[$offset]);

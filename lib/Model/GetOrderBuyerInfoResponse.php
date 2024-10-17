@@ -121,7 +121,7 @@ class GetOrderBuyerInfoResponse  extends BaseModel implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'headers' => 'headers',
+        'headers' => 'getHeaders',
         'payload' => 'getPayload',
         'errors' => 'getErrors'
     ];

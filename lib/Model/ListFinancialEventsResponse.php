@@ -99,6 +99,7 @@ class ListFinancialEventsResponse  extends BaseModel implements ModelInterface, 
      * @var string[]
      */
     protected static $attributeMap = [
+        'headers' => 'headers',
         'payload' => 'payload',
         'errors' => 'errors'
     ];
@@ -109,6 +110,7 @@ class ListFinancialEventsResponse  extends BaseModel implements ModelInterface, 
      * @var string[]
      */
     protected static $setters = [
+        'headers' => 'setHeaders',
         'payload' => 'setPayload',
         'errors' => 'setErrors'
     ];
@@ -119,6 +121,7 @@ class ListFinancialEventsResponse  extends BaseModel implements ModelInterface, 
      * @var string[]
      */
     protected static $getters = [
+        'headers' => 'getHeaders',
         'payload' => 'getPayload',
         'errors' => 'getErrors'
     ];
@@ -163,10 +166,6 @@ class ListFinancialEventsResponse  extends BaseModel implements ModelInterface, 
     {
         return self::$swaggerModelName;
     }
-
-
-
-
 
     /**
      * Associative array for storing property values
@@ -258,6 +257,19 @@ class ListFinancialEventsResponse  extends BaseModel implements ModelInterface, 
 
         return $this;
     }
+
+    public function getHeaders()
+    {
+        return $this->container['headers'];
+    }
+
+    public function setHeaders($headers)
+    {
+        $this->container['headers'] = $headers;
+        return $this;
+    }
+
+
     /**
      * Returns true if offset exists. False otherwise.
      *

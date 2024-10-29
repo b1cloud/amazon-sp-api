@@ -165,7 +165,9 @@ class TaxCollection  extends BaseModel implements ModelInterface, ArrayAccess
     }
 
     const MODEL_MARKETPLACE_FACILITATOR = 'MarketplaceFacilitator';
+    const MODEL_LOW_VALUE_GOODS = 'LowValueGoods';
     const RESPONSIBLE_PARTY_AMAZON_SERVICES_INC = 'Amazon Services, Inc.';
+    const RESPONSIBLE_PARTY_COMMERCIAL_SERVICES_PTY_LTD = 'Amazon Commercial Services Pty Ltd';
 
 
 
@@ -178,6 +180,7 @@ class TaxCollection  extends BaseModel implements ModelInterface, ArrayAccess
     {
         return [
             self::MODEL_MARKETPLACE_FACILITATOR,
+            self::MODEL_LOW_VALUE_GOODS,
         ];
     }
 
@@ -190,6 +193,7 @@ class TaxCollection  extends BaseModel implements ModelInterface, ArrayAccess
     {
         return [
             self::RESPONSIBLE_PARTY_AMAZON_SERVICES_INC,
+            self::RESPONSIBLE_PARTY_COMMERCIAL_SERVICES_PTY_LTD,
         ];
     }
 
@@ -223,7 +227,7 @@ class TaxCollection  extends BaseModel implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getModelAllowableValues();
-        if (!is_null($this->container['model']) && !in_array($this->container['model'], $allowedValues, true)) {
+        if (!empty($this->container['model']) && !in_array($this->container['model'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'model', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -231,7 +235,7 @@ class TaxCollection  extends BaseModel implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getResponsiblePartyAllowableValues();
-        if (!is_null($this->container['responsibleParty']) && !in_array($this->container['responsibleParty'], $allowedValues, true)) {
+        if (!empty($this->container['responsibleParty']) && !in_array($this->container['responsibleParty'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'responsibleParty', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -273,7 +277,7 @@ class TaxCollection  extends BaseModel implements ModelInterface, ArrayAccess
     public function setModel($model)
     {
         $allowedValues = $this->getModelAllowableValues();
-        if (!is_null($model) && !in_array($model, $allowedValues, true)) {
+        if (!empty($model) && !in_array($model, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'model', must be one of '%s'",
@@ -306,7 +310,7 @@ class TaxCollection  extends BaseModel implements ModelInterface, ArrayAccess
     public function setResponsibleParty($responsibleParty)
     {
         $allowedValues = $this->getResponsiblePartyAllowableValues();
-        if (!is_null($responsibleParty) && !in_array($responsibleParty, $allowedValues, true)) {
+        if (!empty($responsibleParty) && !in_array($responsibleParty, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'responsibleParty', must be one of '%s'",
